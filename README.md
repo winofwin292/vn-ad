@@ -51,18 +51,14 @@ export default function Example() {
 
 ## Thành phần
 
-```js
-<SelectProvince />
-```
+### `<SelectProvince />`
 
 Thuộc tính:
 
 -   value (bắt buộc): giá trị nhận vào kiểu **_string_**. Dùng để lưu trữ mã tỉnh/thành phố khi chọn tỉnh/thành phố.
 -   onChange (bắt buộc): giá trị nhận vào kiểu **_func_**. Dùng để đặt giá trị mới cho **_value_** khi chọn tỉnh/thành phố.
 
-```js
-<SelectDistrict />
-```
+### `<SelectDistrict />`
 
 Thuộc tính:
 
@@ -70,9 +66,7 @@ Thuộc tính:
 -   onChange (bắt buộc): giá trị nhận vào kiểu **_func_**. Dùng để đặt giá trị mới cho **_value_** khi chọn quận/huyện.
 -   province: giá trị nhận vào kiểu **_string_**. Mã tỉnh/thành phố dùng để lọc danh sách quận/huyện được chọn theo tỉnh, nếu không truyền sẽ cho phép chọn tất cả các quận/huyện ở Việt Nam.
 
-```js
-<SelectCommune />
-```
+### `<SelectCommune />`
 
 -   value (bắt buộc): giá trị nhận vào kiểu **_string_**. Dùng để lưu trữ mã xã/phường khi chọn xã/phường.
 -   onChange (bắt buộc): giá trị nhận vào kiểu **_func_**. Dùng để đặt giá trị mới cho **_value_** khi chọn xã/phường.
@@ -80,15 +74,11 @@ Thuộc tính:
 
 ## Hàm
 
-```js
-getAll();
-```
+### `getAll()`
 
 Trả về dữ liệu chứa tất cả các đơn vị hành chính hiện tại của Việt Nam.
 
-```js
-getAllProvince();
-```
+### `getAllProvince()`
 
 Trả về dữ liệu chứa tất cả các tỉnh/thành phố hiện tại của Việt Nam.
 
@@ -103,13 +93,11 @@ Dữ liệu trả về:
         "name_with_type": "Thành phố Hà Nội",
         "code": "01"
     }
-    ///...
+    //...
 ]
 ```
 
-```js
-findProvinceByCode(pcode);
-```
+### `findProvinceByCode(pcode)`
 
 Trả về dữ liệu chứa tỉnh/thành phố có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -127,9 +115,7 @@ Dữ liệu trả về:
 ]
 ```
 
-```js
-findProvinceByName(pname);
-```
+### `findProvinceByName(pname)`
 
 Trả về dữ liệu chứa tỉnh/thành phố có tên giống với tên được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -147,9 +133,7 @@ Dữ liệu trả về:
 ]
 ```
 
-```js
-getProvinceName(pcode);
-```
+### `getProvinceName(pcode)`
 
 Trả về tên của tỉnh/thành phố có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -159,9 +143,7 @@ Dữ liệu trả về:
 "Hà Nội"
 ```
 
-```js
-getProvinceNameWithType(pcode);
-```
+### `getProvinceNameWithType(pcode)`
 
 Trả về tên đầy đủ của tỉnh/thành phố có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -171,9 +153,7 @@ Dữ liệu trả về:
 "Thành phố Hà Nội"
 ```
 
-```js
-getAllDistrict();
-```
+### `getAllDistrict()`
 
 Trả về dữ liệu chứa tất cả các quận/huyện hiện tại của Việt Nam.
 
@@ -191,13 +171,11 @@ Dữ liệu trả về:
         "code": "001",
         "parent_code": "01"
     }
-    ///...
+    //...
 ]
 ```
 
-```js
-findDistrictByCode(dcode);
-```
+### `findDistrictByCode(dcode)`
 
 Trả về dữ liệu chứa quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -218,9 +196,7 @@ Dữ liệu trả về:
 ]
 ```
 
-```js
-findDistrictByName(dname);
-```
+### `findDistrictByName(dname)`
 
 Trả về dữ liệu chứa quận/huyện có tên giống với tên được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -241,9 +217,7 @@ Dữ liệu trả về:
 ]
 ```
 
-```js
-getDistrictName(dcode);
-```
+### `getDistrictName(dcode)`
 
 Trả về tên của quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -253,9 +227,7 @@ Dữ liệu trả về:
 "Ba Đình"
 ```
 
-```js
-getDistrictNameWithType();
-```
+### `getDistrictNameWithType()`
 
 Trả về tên đầy đủ của quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -265,9 +237,7 @@ Dữ liệu trả về:
 "Quận Ba Đình"
 ```
 
-```js
-getListDistrictByParentCode(pcode);
-```
+### `getListDistrictByParentCode(pcode)`
 
 Trả về dữ liệu chứa quận/huyện thuộc tỉnh có mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -285,13 +255,11 @@ Dữ liệu trả về:
         "code": "001",
         "parent_code": "01"
     }
-    ///...
+    //...
 ]
 ```
 
-```js
-getDistrictPath(dcode);
-```
+### `getDistrictPath(dcode)`
 
 Trả về địa chỉ của quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -301,9 +269,7 @@ Dữ liệu trả về:
 "Ba Đình, Hà Nội"
 ```
 
-```js
-getDistrictPathWithType(dcode);
-```
+### `getDistrictPathWithType(dcode)`
 
 Trả về địa chỉ đầy đủ của quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -313,9 +279,7 @@ Dữ liệu trả về:
 "Quận Ba Đình, Thành phố Hà Nội"
 ```
 
-```js
-getAllCommune();
-```
+### `getAllCommune()`
 
 Trả về dữ liệu chứa tất cả các phường/xã hiện tại của Việt Nam.
 
@@ -333,13 +297,11 @@ Dữ liệu trả về:
         "code": "00001",
         "parent_code": "001"
     }
-    ///...
+    //...
 ]
 ```
 
-```js
-findCommuneByCode(ccode);
-```
+### `findCommuneByCode(ccode)`
 
 Trả về dữ liệu chứa phường/xã có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -360,9 +322,7 @@ Dữ liệu trả về:
 ]
 ```
 
-```js
-findCommuneByName(cname);
-```
+### `findCommuneByName(cname)`
 
 Trả về dữ liệu chứa phường/xã có tên giống với tên được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -383,9 +343,7 @@ Dữ liệu trả về:
 ]
 ```
 
-```js
-getCommuneName(ccode);
-```
+### `getCommuneName(ccode)`
 
 Trả về tên của phường/xã có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -395,9 +353,7 @@ Dữ liệu trả về:
 "Phúc Xá"
 ```
 
-```js
-getCommuneNameWithType(ccode);
-```
+### `getCommuneNameWithType(ccode)`
 
 Trả về tên đầy đủ của phường/xã có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -407,9 +363,7 @@ Dữ liệu trả về:
 "Phường Phúc Xá"
 ```
 
-```js
-getListCommuneByParentCode(dcode);
-```
+### `getListCommuneByParentCode(dcode)`
 
 Trả về dữ liệu chứa phường/xã thuộc tỉnh có mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -431,9 +385,7 @@ Dữ liệu trả về:
 ]
 ```
 
-```js
-getCommunePath(ccode);
-```
+### `getCommunePath(ccode)`
 
 Trả về địa chỉ của phường/xã có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -443,9 +395,7 @@ Dữ liệu trả về:
 "Phúc Xá, Ba Đình, Hà Nội"
 ```
 
-```js
-getCommunePathWithType(ccode);
-```
+### `getCommunePathWithType(ccode)`
 
 Trả về địa chỉ đầy đủ của quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -455,9 +405,7 @@ Dữ liệu trả về:
 "Phường Phúc Xá, Quận Ba Đình, Thành phố Hà Nội"
 ```
 
-```js
-getTreeByCode(pCode, dCode, cCode);
-```
+### `getTreeByCode(pCode, dCode, cCode)`
 
 Trả về **object** chứa thông tin của mã tỉnh/thành phố, quận/huyện, phường/xã được truyền vào. Nếu mã truyền vào không hợp lệ sẽ trả về **_null_**
 
