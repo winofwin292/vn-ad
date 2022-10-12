@@ -1,7 +1,6 @@
 # Vietnam Administrative Divisions - Đơn vị thành chính Việt Nam
 
 [![Version](https://img.shields.io/npm/v/vn-ad.svg)](https://www.npmjs.com/package/vn-ad)
-[![Build Status](https://travis-ci.org/wix/vn-ad.svg?branch=master)](https://travis-ci.org/wix/vn-ad)
 
 Cung cấp các thành phần và các hàm hỗ trợ tích hợp đơn vị hành chính vào dự án ReactJS.
 
