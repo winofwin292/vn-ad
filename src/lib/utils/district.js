@@ -4,8 +4,12 @@ export const getAllDistrict = () => {
     return districts;
 };
 
-export const getDistrictByCode = (code) => {
+export const findDistrictByCode = (code) => {
     return districts.filter((item) => item.code === code);
+};
+
+export const findDistrictByName = (name) => {
+    return districts.filter((item) => item.name === name);
 };
 
 export const getDistrictName = (code) => {

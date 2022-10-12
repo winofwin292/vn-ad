@@ -1,44 +1,56 @@
 import SelectProvince from "./components/SelectProvince";
 import SelectDistrict from "./components/SelectDistrict";
 import SelectCommune from "./components/SelectCommune";
+import { getAll, getTreeByCode } from "./utils/tree";
 import {
-    getAll,
     getAllProvince,
-    getProvinceByCode,
+    findProvinceByCode,
+    findProvinceByName,
     getProvinceName,
     getProvinceNameWithType,
+} from "./utils/province";
+import {
     getAllDistrict,
-    getDistrictByCode,
+    findDistrictByCode,
+    findDistrictByName,
     getDistrictName,
     getDistrictNameWithType,
     getListDistrictByParentCode,
     getDistrictPath,
     getDistrictPathWithType,
+} from "./utils/district";
+import {
     getAllCommune,
-    getCommuneByCode,
+    findCommuneByCode,
+    findCommuneByName,
     getCommuneName,
     getCommuneNameWithType,
     getListCommuneByParentCode,
     getCommunePath,
     getCommunePathWithType,
-    getTreeByCode,
-} from "./utils";
+} from "./utils/commune";
 
-const vnad = {
+export {
+    SelectProvince,
+    SelectDistrict,
+    SelectCommune,
     getAll,
     getAllProvince,
-    getProvinceByCode,
+    findProvinceByCode,
+    findProvinceByName,
     getProvinceName,
     getProvinceNameWithType,
     getAllDistrict,
-    getDistrictByCode,
+    findDistrictByCode,
+    findDistrictByName,
     getDistrictName,
     getDistrictNameWithType,
     getListDistrictByParentCode,
     getDistrictPath,
     getDistrictPathWithType,
     getAllCommune,
-    getCommuneByCode,
+    findCommuneByCode,
+    findCommuneByName,
     getCommuneName,
     getCommuneNameWithType,
     getListCommuneByParentCode,
@@ -46,5 +58,3 @@ const vnad = {
     getCommunePathWithType,
     getTreeByCode,
 };
-
-export { SelectProvince, SelectDistrict, SelectCommune, vnad };

@@ -4,8 +4,12 @@ export const getAllCommune = () => {
     return communes;
 };
 
-export const getCommuneByCode = (code) => {
+export const findCommuneByCode = (code) => {
     return communes.filter((item) => item.code === code);
+};
+
+export const findCommuneByName = (name) => {
+    return communes.filter((item) => item.name === name);
 };
 
 export const getCommuneName = (code) => {

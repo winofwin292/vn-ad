@@ -4,8 +4,12 @@ export const getAllProvince = () => {
     return provinces;
 };
 
-export const getProvinceByCode = (code) => {
+export const findProvinceByCode = (code) => {
     return provinces.filter((item) => item.code === code);
+};
+
+export const findProvinceByName = (name) => {
+    return provinces.filter((item) => item.name === name);
 };
 
 export const getProvinceName = (code) => {
