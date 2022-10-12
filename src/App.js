@@ -9,10 +9,10 @@ function App() {
     const [tinh, setTinh] = useState("-1");
     const [huyen, setHuyen] = useState("-1");
     const [xa, setXa] = useState("-1");
+
     const [result, setResult] = useState("");
 
     const handleShow = () => {
-        console.log(getCommunePathWithType(xa));
         setResult(getCommunePathWithType(xa));
     };
 

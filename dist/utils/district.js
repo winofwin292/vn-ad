@@ -3,17 +3,21 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getListDistrictByParentCode = exports.getDistrictPathWithType = exports.getDistrictPath = exports.getDistrictNameWithType = exports.getDistrictName = exports.getDistrictByCode = exports.getAllDistrict = void 0;
+exports.getListDistrictByParentCode = exports.getDistrictPathWithType = exports.getDistrictPath = exports.getDistrictNameWithType = exports.getDistrictName = exports.getAllDistrict = exports.findDistrictByName = exports.findDistrictByCode = void 0;
 var _districts = _interopRequireDefault(require("../data/districts.json"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 const getAllDistrict = () => {
   return _districts.default;
 };
 exports.getAllDistrict = getAllDistrict;
-const getDistrictByCode = code => {
+const findDistrictByCode = code => {
   return _districts.default.filter(item => item.code === code);
 };
-exports.getDistrictByCode = getDistrictByCode;
+exports.findDistrictByCode = findDistrictByCode;
+const findDistrictByName = name => {
+  return _districts.default.filter(item => item.name === name);
+};
+exports.findDistrictByName = findDistrictByName;
 const getDistrictName = code => {
   const district = _districts.default.filter(item => item.code === code);
   return !!district.length ? district[0].name : "";
