@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import SelectProvince from "./lib/components/SelectProvince";
-import SelectDistrict from "./lib/components/SelectDistrict";
-import SelectCommune from "./lib/components/SelectCommune";
+import { SelectProvince, SelectDistrict, SelectCommune } from "./lib/index";
+// import SelectDistrict from "./lib/components/SelectDistrict";
+// import SelectCommune from "./lib/components/SelectCommune";
 
-import { getCommunePathWithType } from "./lib/utils";
+import { getCommunePathWithType } from "./lib/index";
 
 function App() {
     const [tinh, setTinh] = useState("-1");

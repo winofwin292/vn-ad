@@ -1,6 +1,6 @@
 import React, { memo, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { getListCommuneByParentCode, getAllCommune } from "../utils/index";
+import { getListCommuneByParentCode, getAllCommune } from "../index";
 
 function SelectCommune(props) {
     const { value, onChange, district, ...newProps } = props;

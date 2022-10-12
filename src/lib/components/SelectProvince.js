@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
-import { getAllProvince } from "../utils/index";
+import { getAllProvince } from "../index";
 
 function SelectProvince(props) {
     const { value, onChange, ...newProps } = props;

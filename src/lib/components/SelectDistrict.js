@@ -1,6 +1,6 @@
 import React, { memo, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { getListDistrictByParentCode, getAllDistrict } from "../utils/index";
+import { getListDistrictByParentCode, getAllDistrict } from "../index";
 
 function SelectDistrict(props) {
     const { value, onChange, province, ...newProps } = props;
