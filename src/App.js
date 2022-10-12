@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import SelectProvince from "./lib/components/SelectProvince";
+import SelectDistrict from "./lib/components/SelectDistrict";
+import SelectCommune from "./lib/components/SelectCommune";
+
+import { getCommunePathWithType } from "./lib/utils";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [tinh, setTinh] = useState("-1");
+    const [huyen, setHuyen] = useState("-1");
+    const [xa, setXa] = useState("-1");
+    const [result, setResult] = useState("");
+
+    const handleShow = () => {
+        console.log(getCommunePathWithType(xa));
+        setResult(getCommunePathWithType(xa));
+    };
+
+    return (
+        <div className="m-2">
+            <div className="d-grid gap-3">
+                <SelectProvince
+                    className="form-select form-select-sm"
+                    aria-label=".form-select-sm example"
+                    style={{ width: "150px" }}
+                    value={tinh}
+                    onChange={setTinh}
+                />
+                <SelectDistrict
+                    className="form-select form-select-sm"
+                    aria-label=".form-select-sm example"
+                    style={{ width: "150px" }}
+                    value={huyen}
+                    province={tinh}
+                    onChange={setHuyen}
+                />
+                <SelectCommune
+                    className="form-select form-select-sm"
+                    aria-label=".form-select-sm example"
+                    style={{ width: "150px" }}
+                    value={xa}
+                    district={huyen}
+                    onChange={setXa}
+                />
+            </div>
+            <button
+                onClick={handleShow}
+                type="button"
+                className="btn btn-primary my-2"
+            >
+                Show
+            </button>
+            <p>Kết quả: {result}</p>
+        </div>
+    );
 }
 
 export default App;
