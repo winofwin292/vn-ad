@@ -94,7 +94,6 @@ Dữ liệu trả về:
         "name_with_type": "Thành phố Hà Nội",
         "code": "01"
     }
-    //...
 ]
 ```
 
@@ -172,7 +171,6 @@ Dữ liệu trả về:
         "code": "001",
         "parent_code": "01"
     }
-    //...
 ]
 ```
 
@@ -256,7 +254,6 @@ Dữ liệu trả về:
         "code": "001",
         "parent_code": "01"
     }
-    //...
 ]
 ```
 
@@ -298,7 +295,6 @@ Dữ liệu trả về:
         "code": "00001",
         "parent_code": "001"
     }
-    //...
 ]
 ```
 
@@ -382,7 +378,6 @@ Dữ liệu trả về:
         "code": "00001",
         "parent_code": "001"
     }
-    ///...
 ]
 ```
 
