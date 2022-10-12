@@ -23,7 +23,12 @@ Demo sử dụng vn-ad và Bootstrap 5
 
 ```js
 import React, { useState } from "react";
-import { SelectProvince, SelectDistrict, SelectCommune } from "vn-ad";
+import {
+    SelectProvince,
+    SelectDistrict,
+    SelectCommune,
+    getCommunePathWithType,
+} from "vn-ad";
 
 export default function Example() {
     //Biến lưu trữ mã đơn vị hành chính
