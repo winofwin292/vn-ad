@@ -1,5 +1,6 @@
 "use strict";
 
+require("core-js/modules/es.array.push.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
