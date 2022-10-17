@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { SelectProvince, SelectDistrict, SelectCommune } from "./lib/index";
-// import SelectDistrict from "./lib/components/SelectDistrict";
-// import SelectCommune from "./lib/components/SelectCommune";
 
 import { getCommunePathWithType } from "./lib/index";
 
 function App() {
-    const [tinh, setTinh] = useState("-1");
-    const [huyen, setHuyen] = useState("-1");
-    const [xa, setXa] = useState("-1");
+    const [tinh, setTinh] = useState("");
+    const [huyen, setHuyen] = useState("");
+    const [xa, setXa] = useState("");
 
     const [result, setResult] = useState("");
 

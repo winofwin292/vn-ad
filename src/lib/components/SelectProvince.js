@@ -1,17 +1,21 @@
-import React, { memo } from "react";
+import React, { memo, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { getAllProvince } from "../index";
 
 function SelectProvince(props) {
-    const { value, onChange, ...newProps } = props;
-    const provinces = getAllProvince();
+    const { value, onChange: handleChange, ...newProps } = props;
+    const [provinces, setProvinces] = useState([]);
 
-    const handleChange = (e) => {
-        onChange(e.target.value);
-    };
+    useEffect(() => {
+        setProvinces(getAllProvince());
+    }, []);
 
     return (
-        <select value={value} onChange={(e) => handleChange(e)} {...newProps}>
+        <select
+            value={value}
+            onChange={(e) => handleChange(e.target.value)}
+            {...newProps}
+        >
             <option value="-1">Chọn tỉnh/thành phố</option>
             {provinces.map((item, index) => (
                 <option key={index} value={item.code}>

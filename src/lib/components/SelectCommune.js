@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { getListCommuneByParentCode, getAllCommune } from "../index";
 
 function SelectCommune(props) {
-    const { value, onChange, district, ...newProps } = props;
+    const { value, onChange: handleChange, district, ...newProps } = props;
     const [communes, setCommunes] = useState([]);
 
     useEffect(() => {
@@ -14,17 +14,16 @@ function SelectCommune(props) {
             temp = [];
         } else temp = getListCommuneByParentCode(district);
 
-        onChange("-1");
-
+        handleChange("-1");
         setCommunes(temp);
-    }, [onChange, district]);
-
-    const handleChange = (e) => {
-        onChange(e.target.value);
-    };
+    }, [handleChange, district]);
 
     return (
-        <select value={value} onChange={(e) => handleChange(e)} {...newProps}>
+        <select
+            value={value}
+            onChange={(e) => handleChange(e.target.value)}
+            {...newProps}
+        >
             <option value="-1">Chọn xã/phường</option>
             {district === "-1" ? (
                 ""

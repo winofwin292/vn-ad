@@ -32,9 +32,9 @@ import {
 
 export default function Example() {
     //Biến lưu trữ mã đơn vị hành chính
-    const [tinh, setTinh] = useState("-1");
-    const [huyen, setHuyen] = useState("-1");
-    const [xa, setXa] = useState("-1");
+    const [tinh, setTinh] = useState("");
+    const [huyen, setHuyen] = useState("");
+    const [xa, setXa] = useState("");
     //Biến lưu trữ kết quả
     const [result, setResult] = useState("");
 
@@ -60,22 +60,24 @@ export default function Example() {
 
 Thuộc tính:
 
--   value (bắt buộc): giá trị nhận vào kiểu **_string_**. Dùng để lưu trữ mã tỉnh/thành phố khi chọn tỉnh/thành phố.
--   onChange (bắt buộc): giá trị nhận vào kiểu **_func_**. Dùng để đặt giá trị mới cho **_value_** khi chọn tỉnh/thành phố.
+-   **value** (bắt buộc): giá trị nhận vào kiểu **_string_**. Dùng để lưu trữ mã tỉnh/thành phố khi chọn tỉnh/thành phố.
+-   **onChange** (bắt buộc): giá trị nhận vào kiểu **_func_**. Dùng để đặt giá trị mới cho **_value_** khi chọn tỉnh/thành phố.
 
 ### `<SelectDistrict />`
 
 Thuộc tính:
 
--   value (bắt buộc): giá trị nhận vào kiểu **_string_**. Dùng để lưu trữ mã quận/huyện khi chọn quận/huyện.
--   onChange (bắt buộc): giá trị nhận vào kiểu **_func_**. Dùng để đặt giá trị mới cho **_value_** khi chọn quận/huyện.
--   province: giá trị nhận vào kiểu **_string_**. Mã tỉnh/thành phố dùng để lọc danh sách quận/huyện được chọn theo tỉnh, nếu không truyền sẽ cho phép chọn tất cả các quận/huyện ở Việt Nam.
+-   **value** (bắt buộc): giá trị nhận vào kiểu **_string_**. Dùng để lưu trữ mã quận/huyện khi chọn quận/huyện.
+-   **onChange** (bắt buộc): giá trị nhận vào kiểu **_func_**. Dùng để đặt giá trị mới cho **_value_** khi chọn quận/huyện.
+-   **province**: giá trị nhận vào kiểu **_string_**. Mã tỉnh/thành phố dùng để lọc danh sách quận/huyện được chọn theo tỉnh, nếu không truyền sẽ cho phép chọn tất cả các quận/huyện ở Việt Nam.
 
 ### `<SelectCommune />`
 
--   value (bắt buộc): giá trị nhận vào kiểu **_string_**. Dùng để lưu trữ mã xã/phường khi chọn xã/phường.
--   onChange (bắt buộc): giá trị nhận vào kiểu **_func_**. Dùng để đặt giá trị mới cho **_value_** khi chọn xã/phường.
--   district: giá trị nhận vào kiểu **_string_**. Mã quận/huyện dùng để lọc danh sách xã/phường được chọn theo tỉnh, nếu không truyền sẽ cho phép chọn tất cả các xã/phường ở Việt Nam.
+Thuộc tính:
+
+-   **value** (bắt buộc): giá trị nhận vào kiểu **_string_**. Dùng để lưu trữ mã xã/phường khi chọn xã/phường.
+-   **onChange** (bắt buộc): giá trị nhận vào kiểu **_func_**. Dùng để đặt giá trị mới cho **_value_** khi chọn xã/phường.
+-   **district**: giá trị nhận vào kiểu **_string_**. Mã quận/huyện dùng để lọc danh sách xã/phường được chọn theo tỉnh, nếu không truyền sẽ cho phép chọn tất cả các xã/phường ở Việt Nam.
 
 ## Hàm
 

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { getListDistrictByParentCode, getAllDistrict } from "../index";
 
 function SelectDistrict(props) {
-    const { value, onChange, province, ...newProps } = props;
+    const { value, onChange: handleChange, province, ...newProps } = props;
     const [districts, setDistricts] = useState([]);
 
     useEffect(() => {
@@ -12,18 +12,18 @@ function SelectDistrict(props) {
         if (!province) temp = getAllDistrict();
         else if (province === "-1") {
             temp = [];
-            onChange("-1");
         } else temp = getListDistrictByParentCode(province);
+        handleChange("-1");
 
         setDistricts(temp);
-    }, [onChange, province]);
-
-    const handleChange = (e) => {
-        onChange(e.target.value);
-    };
+    }, [handleChange, province]);
 
     return (
-        <select value={value} onChange={(e) => handleChange(e)} {...newProps}>
+        <select
+            value={value}
+            onChange={(e) => handleChange(e.target.value)}
+            {...newProps}
+        >
             <option value="-1">Chọn quận/huyện</option>
             {province === "-1" ? (
                 ""

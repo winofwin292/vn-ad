@@ -1,11 +1,11 @@
 "use strict";
 
 require("core-js/modules/es.object.assign.js");
-require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+require("core-js/modules/web.dom-collections.iterator.js");
 var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _index = require("../index");
@@ -19,16 +19,16 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 function SelectProvince(props) {
   const {
       value,
-      onChange
+      onChange: handleChange
     } = props,
     newProps = _objectWithoutProperties(props, _excluded);
-  const provinces = (0, _index.getAllProvince)();
-  const handleChange = e => {
-    onChange(e.target.value);
-  };
+  const [provinces, setProvinces] = (0, _react.useState)([]);
+  (0, _react.useEffect)(() => {
+    setProvinces((0, _index.getAllProvince)());
+  }, []);
   return /*#__PURE__*/_react.default.createElement("select", _extends({
     value: value,
-    onChange: e => handleChange(e)
+    onChange: e => handleChange(e.target.value)
   }, newProps), /*#__PURE__*/_react.default.createElement("option", {
     value: "-1"
   }, "Ch\u1ECDn t\u1EC9nh/th\xE0nh ph\u1ED1"), provinces.map((item, index) => /*#__PURE__*/_react.default.createElement("option", {

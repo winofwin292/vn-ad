@@ -19,7 +19,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 function SelectCommune(props) {
   const {
       value,
-      onChange,
+      onChange: handleChange,
       district
     } = props,
     newProps = _objectWithoutProperties(props, _excluded);
@@ -29,15 +29,12 @@ function SelectCommune(props) {
     if (!district) temp = (0, _index.getAllCommune)();else if (district === "-1") {
       temp = [];
     } else temp = (0, _index.getListCommuneByParentCode)(district);
-    onChange("-1");
+    handleChange("-1");
     setCommunes(temp);
-  }, [onChange, district]);
-  const handleChange = e => {
-    onChange(e.target.value);
-  };
+  }, [handleChange, district]);
   return /*#__PURE__*/_react.default.createElement("select", _extends({
     value: value,
-    onChange: e => handleChange(e)
+    onChange: e => handleChange(e.target.value)
   }, newProps), /*#__PURE__*/_react.default.createElement("option", {
     value: "-1"
   }, "Ch\u1ECDn x\xE3/ph\u01B0\u1EDDng"), district === "-1" ? "" : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, communes.map((item, index) => /*#__PURE__*/_react.default.createElement("option", {

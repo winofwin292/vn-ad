@@ -19,7 +19,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 function SelectDistrict(props) {
   const {
       value,
-      onChange,
+      onChange: handleChange,
       province
     } = props,
     newProps = _objectWithoutProperties(props, _excluded);
@@ -28,16 +28,13 @@ function SelectDistrict(props) {
     let temp = [];
     if (!province) temp = (0, _index.getAllDistrict)();else if (province === "-1") {
       temp = [];
-      onChange("-1");
     } else temp = (0, _index.getListDistrictByParentCode)(province);
+    handleChange("-1");
     setDistricts(temp);
-  }, [onChange, province]);
-  const handleChange = e => {
-    onChange(e.target.value);
-  };
+  }, [handleChange, province]);
   return /*#__PURE__*/_react.default.createElement("select", _extends({
     value: value,
-    onChange: e => handleChange(e)
+    onChange: e => handleChange(e.target.value)
   }, newProps), /*#__PURE__*/_react.default.createElement("option", {
     value: "-1"
   }, "Ch\u1ECDn qu\u1EADn/huy\u1EC7n"), province === "-1" ? "" : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, districts.map((item, index) => /*#__PURE__*/_react.default.createElement("option", {
