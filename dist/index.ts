@@ -1,6 +1,6 @@
 import SelectProvince from "./components/SelectProvince";
 import SelectDistrict from "./components/SelectDistrict";
-import SelectCommune from "./components/SelectCommune";
+import SelectWard from "./components/SelectWard";
 import { getAll, getTreeByCode } from "./utils/tree";
 import {
     getAllProvince,
@@ -20,20 +20,20 @@ import {
     getDistrictPathWithType,
 } from "./utils/district";
 import {
-    getAllCommune,
-    findCommuneByCode,
-    findCommuneByName,
-    getCommuneName,
-    getCommuneNameWithType,
-    getListCommuneByParentCode,
-    getCommunePath,
-    getCommunePathWithType,
-} from "./utils/commune";
+    getAllWard,
+    findWardByCode,
+    findWardByName,
+    getWardName,
+    getWardNameWithType,
+    getListWardByParentCode,
+    getWardPath,
+    getWardPathWithType,
+} from "./utils/ward";
 
 export {
     SelectProvince,
     SelectDistrict,
-    SelectCommune,
+    SelectWard,
     getAll,
     getAllProvince,
     findProvinceByCode,
@@ -48,13 +48,13 @@ export {
     getListDistrictByParentCode,
     getDistrictPath,
     getDistrictPathWithType,
-    getAllCommune,
-    findCommuneByCode,
-    findCommuneByName,
-    getCommuneName,
-    getCommuneNameWithType,
-    getListCommuneByParentCode,
-    getCommunePath,
-    getCommunePathWithType,
+    getAllWard,
+    findWardByCode,
+    findWardByName,
+    getWardName,
+    getWardNameWithType,
+    getListWardByParentCode,
+    getWardPath,
+    getWardPathWithType,
     getTreeByCode,
 };

@@ -26,8 +26,8 @@ import React, { useState } from "react";
 import {
     SelectProvince,
     SelectDistrict,
-    SelectCommune,
-    getCommunePathWithType,
+    SelectWard,
+    getWardPathWithType,
 } from "vn-ad";
 
 export default function Example() {
@@ -39,14 +39,14 @@ export default function Example() {
     const [result, setResult] = useState("");
 
     const handleShow = () => {
-        setResult(getCommunePathWithType(xa));
+        setResult(getWardPathWithType(xa));
     };
 
     return (
         <>
             <SelectProvince value={tinh} onChange={setTinh} />
             <SelectDistrict value={huyen} province={tinh} onChange={setHuyen} />
-            <SelectCommune value={xa} district={huyen} onChange={setXa} />
+            <SelectWard value={xa} district={huyen} onChange={setXa} />
             <button onClick={handleShow}>Show</button>
             <p>Kết quả: {result}</p>
         </>
@@ -71,7 +71,7 @@ Thuộc tính:
 -   **onChange** (bắt buộc): giá trị nhận vào kiểu **_func_**. Dùng để đặt giá trị mới cho **_value_** khi chọn quận/huyện.
 -   **province**: giá trị nhận vào kiểu **_string_**. Mã tỉnh/thành phố dùng để lọc danh sách quận/huyện được chọn theo tỉnh, nếu không truyền sẽ cho phép chọn tất cả các quận/huyện ở Việt Nam.
 
-### `<SelectCommune />`
+### `<SelectWard />`
 
 Thuộc tính:
 
@@ -103,7 +103,7 @@ Dữ liệu trả về:
 ]
 ```
 
-### `findProvinceByCode(pcode)`
+### `findProvinceByCode(pCode)`
 
 Trả về dữ liệu chứa tỉnh/thành phố có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -121,7 +121,7 @@ Dữ liệu trả về:
 ]
 ```
 
-### `findProvinceByName(pname)`
+### `findProvinceByName(pName)`
 
 Trả về dữ liệu chứa tỉnh/thành phố có tên giống với tên được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -139,7 +139,7 @@ Dữ liệu trả về:
 ]
 ```
 
-### `getProvinceName(pcode)`
+### `getProvinceName(pCode)`
 
 Trả về tên của tỉnh/thành phố có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -149,7 +149,7 @@ Dữ liệu trả về:
 "Hà Nội"
 ```
 
-### `getProvinceNameWithType(pcode)`
+### `getProvinceNameWithType(pCode)`
 
 Trả về tên đầy đủ của tỉnh/thành phố có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -180,7 +180,7 @@ Dữ liệu trả về:
 ]
 ```
 
-### `findDistrictByCode(dcode)`
+### `findDistrictByCode(dCode)`
 
 Trả về dữ liệu chứa quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -201,7 +201,7 @@ Dữ liệu trả về:
 ]
 ```
 
-### `findDistrictByName(dname)`
+### `findDistrictByName(dName)`
 
 Trả về dữ liệu chứa quận/huyện có tên giống với tên được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -222,7 +222,7 @@ Dữ liệu trả về:
 ]
 ```
 
-### `getDistrictName(dcode)`
+### `getDistrictName(dCode)`
 
 Trả về tên của quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -242,7 +242,7 @@ Dữ liệu trả về:
 "Quận Ba Đình"
 ```
 
-### `getListDistrictByParentCode(pcode)`
+### `getListDistrictByParentCode(pCode)`
 
 Trả về dữ liệu chứa quận/huyện thuộc tỉnh có mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -263,7 +263,7 @@ Dữ liệu trả về:
 ]
 ```
 
-### `getDistrictPath(dcode)`
+### `getDistrictPath(dCode)`
 
 Trả về địa chỉ của quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -273,7 +273,7 @@ Dữ liệu trả về:
 "Ba Đình, Hà Nội"
 ```
 
-### `getDistrictPathWithType(dcode)`
+### `getDistrictPathWithType(dCode)`
 
 Trả về địa chỉ đầy đủ của quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -283,7 +283,7 @@ Dữ liệu trả về:
 "Quận Ba Đình, Thành phố Hà Nội"
 ```
 
-### `getAllCommune()`
+### `getAllWard()`
 
 Trả về dữ liệu chứa tất cả các phường/xã hiện tại của Việt Nam.
 
@@ -304,7 +304,7 @@ Dữ liệu trả về:
 ]
 ```
 
-### `findCommuneByCode(ccode)`
+### `findWardByCode(wCode)`
 
 Trả về dữ liệu chứa phường/xã có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -325,7 +325,7 @@ Dữ liệu trả về:
 ]
 ```
 
-### `findCommuneByName(cname)`
+### `findWardByName(wName)`
 
 Trả về dữ liệu chứa phường/xã có tên giống với tên được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -346,7 +346,7 @@ Dữ liệu trả về:
 ]
 ```
 
-### `getCommuneName(ccode)`
+### `getWardName(wCode)`
 
 Trả về tên của phường/xã có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -356,7 +356,7 @@ Dữ liệu trả về:
 "Phúc Xá"
 ```
 
-### `getCommuneNameWithType(ccode)`
+### `getWardNameWithType(wCode)`
 
 Trả về tên đầy đủ của phường/xã có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -366,7 +366,7 @@ Dữ liệu trả về:
 "Phường Phúc Xá"
 ```
 
-### `getListCommuneByParentCode(dcode)`
+### `getListWardByParentCode(dCode)`
 
 Trả về dữ liệu chứa phường/xã thuộc tỉnh có mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -387,7 +387,7 @@ Dữ liệu trả về:
 ]
 ```
 
-### `getCommunePath(ccode)`
+### `getWardPath(wCode)`
 
 Trả về địa chỉ của phường/xã có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -397,7 +397,7 @@ Dữ liệu trả về:
 "Phúc Xá, Ba Đình, Hà Nội"
 ```
 
-### `getCommunePathWithType(ccode)`
+### `getWardPathWithType(wCode)`
 
 Trả về địa chỉ đầy đủ của quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
@@ -407,7 +407,7 @@ Dữ liệu trả về:
 "Phường Phúc Xá, Quận Ba Đình, Thành phố Hà Nội"
 ```
 
-### `getTreeByCode(pCode, dCode, cCode)`
+### `getTreeByCode(pCode, dCode, wCode)`
 
 Trả về **object** chứa thông tin của mã tỉnh/thành phố, quận/huyện, phường/xã được truyền vào. Nếu mã truyền vào không hợp lệ sẽ trả về **_null_**
 
@@ -420,7 +420,7 @@ Dữ liệu trả về:
     "type": "thanh-pho",
     "name_with_type": "Thành phố Hà Nội",
     "code": "01",
-    "quan-huyen": {
+    "quan_huyen": {
         "name": "Ba Đình",
         "type": "quan",
         "slug": "ba-dinh",
@@ -429,7 +429,7 @@ Dữ liệu trả về:
         "path_with_type": "Quận Ba Đình, Thành phố Hà Nội",
         "code": "001",
         "parent_code": "01",
-        "xa-phuong": {
+        "xa_phuong": {
             "name": "Phúc Xá",
             "type": "phuong",
             "slug": "phuc-xa",

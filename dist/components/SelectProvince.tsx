@@ -2,9 +2,26 @@ import React, { memo, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { getAllProvince } from "../index";
 
-function SelectProvince(props) {
-    const { value, onChange: handleChange, ...newProps } = props;
-    const [provinces, setProvinces] = useState([]);
+type ProvinceProps = {
+    value: string;
+    onChange: (id: string) => void;
+    [x: string]: any;
+};
+
+type Province = {
+    name: string;
+    slug: string;
+    type: string;
+    name_with_type: string;
+    code: string;
+};
+
+const SelectProvince: React.FC<ProvinceProps> = ({
+    value,
+    onChange: handleChange,
+    ...newProps
+}) => {
+    const [provinces, setProvinces] = useState<Province[]>([]);
 
     useEffect(() => {
         setProvinces(getAllProvince());
@@ -24,7 +41,7 @@ function SelectProvince(props) {
             ))}
         </select>
     );
-}
+};
 
 SelectProvince.propTypes = {
     value: PropTypes.string.isRequired,

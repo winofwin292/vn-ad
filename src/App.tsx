@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { SelectProvince, SelectDistrict, SelectCommune } from "./lib/index";
+import { SelectProvince, SelectDistrict, SelectWard } from "./lib/index";
 
-import { getCommunePathWithType } from "./lib/index";
+import { getWardPathWithType } from "./lib/index";
 
-function App() {
+const App: React.FC = () => {
     const [tinh, setTinh] = useState("");
     const [huyen, setHuyen] = useState("");
     const [xa, setXa] = useState("");
@@ -11,7 +11,7 @@ function App() {
     const [result, setResult] = useState("");
 
     const handleShow = () => {
-        setResult(getCommunePathWithType(xa));
+        setResult(getWardPathWithType(xa));
     };
 
     return (
@@ -32,7 +32,7 @@ function App() {
                     province={tinh}
                     onChange={setHuyen}
                 />
-                <SelectCommune
+                <SelectWard
                     className="form-select form-select-sm"
                     aria-label=".form-select-sm example"
                     style={{ width: "150px" }}
@@ -51,6 +51,6 @@ function App() {
             <p>Kết quả: {result}</p>
         </div>
     );
-}
+};
 
 export default App;

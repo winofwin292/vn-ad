@@ -1,21 +1,43 @@
 import React, { memo, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { getListCommuneByParentCode, getAllCommune } from "../index";
+import { getListWardByParentCode, getAllWard } from "../index";
 
-function SelectCommune(props) {
-    const { value, onChange: handleChange, district, ...newProps } = props;
-    const [communes, setCommunes] = useState([]);
+type WardProps = {
+    value: string;
+    onChange: (id: string) => void;
+    district?: string;
+    [x: string]: any;
+};
+
+type Ward = {
+    name: string;
+    type: string;
+    slug: string;
+    name_with_type: string;
+    path: string;
+    path_with_type: string;
+    code: string;
+    parent_code: string;
+};
+
+const SelectWard: React.FC<WardProps> = ({
+    value,
+    onChange: handleChange,
+    district,
+    ...newProps
+}) => {
+    const [wards, setWards] = useState<Ward[]>([]);
 
     useEffect(() => {
-        let temp = [];
+        let temp: Ward[] = [];
 
-        if (!district) temp = getAllCommune();
+        if (!district) temp = getAllWard();
         else if (district === "-1") {
             temp = [];
-        } else temp = getListCommuneByParentCode(district);
+        } else temp = getListWardByParentCode(district);
 
         handleChange("-1");
-        setCommunes(temp);
+        setWards(temp);
     }, [handleChange, district]);
 
     return (
@@ -29,7 +51,7 @@ function SelectCommune(props) {
                 ""
             ) : (
                 <>
-                    {communes.map((item, index) => (
+                    {wards.map((item, index) => (
                         <option key={index} value={item.code}>
                             {item.name_with_type}
                         </option>
@@ -38,12 +60,12 @@ function SelectCommune(props) {
             )}
         </select>
     );
-}
+};
 
-SelectCommune.propTypes = {
+SelectWard.propTypes = {
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     district: PropTypes.string,
 };
 
-export default memo(SelectCommune);
+export default memo(SelectWard);

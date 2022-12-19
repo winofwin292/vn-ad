@@ -2,12 +2,34 @@ import React, { memo, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { getListDistrictByParentCode, getAllDistrict } from "../index";
 
-function SelectDistrict(props) {
-    const { value, onChange: handleChange, province, ...newProps } = props;
-    const [districts, setDistricts] = useState([]);
+type DistrictProps = {
+    value: string;
+    onChange: (id: string) => void;
+    province?: string;
+    [x: string]: any;
+};
+
+type District = {
+    name: string;
+    type: string;
+    slug: string;
+    name_with_type: string;
+    path: string;
+    path_with_type: string;
+    code: string;
+    parent_code: string;
+};
+
+const SelectDistrict: React.FC<DistrictProps> = ({
+    value,
+    onChange: handleChange,
+    province,
+    ...newProps
+}) => {
+    const [districts, setDistricts] = useState<District[]>([]);
 
     useEffect(() => {
-        let temp = [];
+        let temp: District[] = [];
 
         if (!province) temp = getAllDistrict();
         else if (province === "-1") {
@@ -38,7 +60,7 @@ function SelectDistrict(props) {
             )}
         </select>
     );
-}
+};
 
 SelectDistrict.propTypes = {
     value: PropTypes.string.isRequired,
