@@ -16,9 +16,10 @@
     "phường",
     "đơn vị hành chính việt nam"
   ],
-  "version": "0.1.7",
-  "main": "dist/index.ts",
-  "module": "dist/index.ts",
+  "version": "0.1.8",
+  "main": "dist/index.js",
+  "types": "lib/index.d.ts",
+  "module": "dist/index.js",
   "files": [
     "dist",
     "README.md"
@@ -40,7 +41,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "rmdir /s /q dist && set NODE_ENV=production && babel src/lib --out-dir dist --copy-files",
+    "build": "rmdir /s /q dist && set NODE_ENV=production && tsc",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

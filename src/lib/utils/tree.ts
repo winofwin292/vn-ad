@@ -31,7 +31,7 @@ type Tree = {
     };
 };
 
-export const getAll = () => {
+export const getAll: any = () => {
     return tree;
 };
 
