@@ -81,10 +81,6 @@ Thuộc tính:
 
 ## Hàm
 
-### `getAll()`
-
-Trả về dữ liệu chứa tất cả các đơn vị hành chính hiện tại của Việt Nam.
-
 ### `getAllProvince()`
 
 Trả về dữ liệu chứa tất cả các tỉnh/thành phố hiện tại của Việt Nam.
