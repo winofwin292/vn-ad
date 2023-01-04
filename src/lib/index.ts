@@ -1,7 +1,7 @@
 import SelectProvince from "./components/SelectProvince";
 import SelectDistrict from "./components/SelectDistrict";
 import SelectWard from "./components/SelectWard";
-import { getAll, getTreeByCode } from "./utils/tree";
+import { getTreeByCode } from "./utils/tree";
 import {
     getAllProvince,
     findProvinceByCode,
@@ -34,7 +34,6 @@ export {
     SelectProvince,
     SelectDistrict,
     SelectWard,
-    getAll,
     getAllProvince,
     findProvinceByCode,
     findProvinceByName,

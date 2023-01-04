@@ -10,19 +10,11 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getTreeByCode = exports.getAll = void 0;
-var tree_json_1 = __importDefault(require("../data/tree.json"));
+exports.getTreeByCode = void 0;
 var province_1 = require("./province");
 var district_1 = require("./district");
 var ward_1 = require("./ward");
-var getAll = function () {
-    return tree_json_1.default;
-};
-exports.getAll = getAll;
 var getTreeByCode = function (pCode, dCode, cCode) {
     var province = (0, province_1.findProvinceByCode)(pCode)[0];
     if (!province) {

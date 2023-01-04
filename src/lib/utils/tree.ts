@@ -1,4 +1,3 @@
-import tree from "../data/tree.json";
 import { findProvinceByCode } from "./province";
 import { findDistrictByCode } from "./district";
 import { findWardByCode } from "./ward";
@@ -29,10 +28,6 @@ type Tree = {
             parent_code: string;
         };
     };
-};
-
-export const getAll: any = () => {
-    return tree;
 };
 
 export const getTreeByCode = (pCode: string, dCode: string, cCode: string) => {

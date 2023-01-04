@@ -25,6 +25,5 @@ type Tree = {
         };
     };
 };
-export declare const getAll: any;
 export declare const getTreeByCode: (pCode: string, dCode: string, cCode: string) => Tree | null;
 export {};

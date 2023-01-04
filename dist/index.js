@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getTreeByCode = exports.getWardPathWithType = exports.getWardPath = exports.getListWardByParentCode = exports.getWardNameWithType = exports.getWardName = exports.findWardByName = exports.findWardByCode = exports.getAllWard = exports.getDistrictPathWithType = exports.getDistrictPath = exports.getListDistrictByParentCode = exports.getDistrictNameWithType = exports.getDistrictName = exports.findDistrictByName = exports.findDistrictByCode = exports.getAllDistrict = exports.getProvinceNameWithType = exports.getProvinceName = exports.findProvinceByName = exports.findProvinceByCode = exports.getAllProvince = exports.getAll = exports.SelectWard = exports.SelectDistrict = exports.SelectProvince = void 0;
+exports.getTreeByCode = exports.getWardPathWithType = exports.getWardPath = exports.getListWardByParentCode = exports.getWardNameWithType = exports.getWardName = exports.findWardByName = exports.findWardByCode = exports.getAllWard = exports.getDistrictPathWithType = exports.getDistrictPath = exports.getListDistrictByParentCode = exports.getDistrictNameWithType = exports.getDistrictName = exports.findDistrictByName = exports.findDistrictByCode = exports.getAllDistrict = exports.getProvinceNameWithType = exports.getProvinceName = exports.findProvinceByName = exports.findProvinceByCode = exports.getAllProvince = exports.SelectWard = exports.SelectDistrict = exports.SelectProvince = void 0;
 var SelectProvince_1 = __importDefault(require("./components/SelectProvince"));
 exports.SelectProvince = SelectProvince_1.default;
 var SelectDistrict_1 = __importDefault(require("./components/SelectDistrict"));
@@ -11,7 +11,6 @@ exports.SelectDistrict = SelectDistrict_1.default;
 var SelectWard_1 = __importDefault(require("./components/SelectWard"));
 exports.SelectWard = SelectWard_1.default;
 var tree_1 = require("./utils/tree");
-Object.defineProperty(exports, "getAll", { enumerable: true, get: function () { return tree_1.getAll; } });
 Object.defineProperty(exports, "getTreeByCode", { enumerable: true, get: function () { return tree_1.getTreeByCode; } });
 var province_1 = require("./utils/province");
 Object.defineProperty(exports, "getAllProvince", { enumerable: true, get: function () { return province_1.getAllProvince; } });
