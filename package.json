@@ -16,7 +16,7 @@
     "phường",
     "đơn vị hành chính việt nam"
   ],
-  "version": "0.1.9",
+  "version": "0.1.10",
   "main": "dist/index.js",
   "types": "lib/index.d.ts",
   "module": "dist/index.js",
