@@ -1,19 +1,12 @@
 import React, { memo, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { getAllProvince } from "../index";
+import { getAllProvinces } from "../index";
+import { Province } from "../types/Province";
 
 type ProvinceProps = {
     value: string;
     onChange: (id: string) => void;
     [x: string]: any;
-};
-
-type Province = {
-    name: string;
-    slug: string;
-    type: string;
-    name_with_type: string;
-    code: string;
 };
 
 const SelectProvince: React.FC<ProvinceProps> = ({
@@ -24,7 +17,7 @@ const SelectProvince: React.FC<ProvinceProps> = ({
     const [provinces, setProvinces] = useState<Province[]>([]);
 
     useEffect(() => {
-        setProvinces(getAllProvince());
+        setProvinces(getAllProvinces());
     }, []);
 
     return (
@@ -35,7 +28,7 @@ const SelectProvince: React.FC<ProvinceProps> = ({
         >
             <option value="-1">Chọn tỉnh/thành phố</option>
             {provinces.map((item, index) => (
-                <option key={index} value={item.code}>
+                <option key={index} value={item.province_code}>
                     {item.name_with_type}
                 </option>
             ))}

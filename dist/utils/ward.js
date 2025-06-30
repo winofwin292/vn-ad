@@ -3,41 +3,80 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getWardPathWithType = exports.getWardPath = exports.getListWardByParentCode = exports.getWardNameWithType = exports.getWardName = exports.findWardByName = exports.findWardByCode = exports.getAllWard = void 0;
+exports.getWardPathWithType = exports.getWardPath = exports.getListWardByProvinceCode = exports.getWardNameWithType = exports.getWardName = exports.findWardByName = exports.findWardByCode = exports.getAllWards = void 0;
 var wards_json_1 = __importDefault(require("../data/wards.json"));
-var getAllWard = function () {
+/**
+ * @description Get all wards
+ * @returns {Ward[]}
+ */
+function getAllWards() {
     return wards_json_1.default;
-};
-exports.getAllWard = getAllWard;
-var findWardByCode = function (code) {
-    return wards_json_1.default.filter(function (item) { return item.code === code; });
-};
+}
+exports.getAllWards = getAllWards;
+/**
+ * @description Find ward by ward_code
+ * @param {string} ward_code - The code of the ward
+ * @returns {Ward[]}
+ */
+function findWardByCode(ward_code) {
+    return wards_json_1.default.filter(function (item) { return item.ward_code === ward_code; });
+}
 exports.findWardByCode = findWardByCode;
-var findWardByName = function (name) {
+/**
+ * @description Find ward by name
+ * @param {string} name - The name of the ward
+ * @returns {Ward[]}
+ */
+function findWardByName(name) {
     return wards_json_1.default.filter(function (item) { return item.name === name; });
-};
+}
 exports.findWardByName = findWardByName;
-var getWardName = function (code) {
-    var ward = wards_json_1.default.filter(function (item) { return item.code === code; });
-    return !!ward.length ? ward[0].name : "";
-};
+/**
+ * @description Get the name of the ward by ward_code
+ * @param {string} ward_code - The code of the ward
+ * @returns {string}
+ */
+function getWardName(ward_code) {
+    var ward = wards_json_1.default.find(function (item) { return item.ward_code === ward_code; });
+    return ward ? ward.name : '';
+}
 exports.getWardName = getWardName;
-var getWardNameWithType = function (code) {
-    var ward = wards_json_1.default.filter(function (item) { return item.code === code; });
-    return !!ward.length ? ward[0].name_with_type : "";
-};
+/**
+ * @description Get the name with type of the ward by ward_code
+ * @param {string} ward_code - The code of the ward
+ * @returns {string}
+ */
+function getWardNameWithType(ward_code) {
+    var ward = wards_json_1.default.find(function (item) { return item.ward_code === ward_code; });
+    return ward ? ward.name_with_type : '';
+}
 exports.getWardNameWithType = getWardNameWithType;
-var getListWardByParentCode = function (code) {
-    return wards_json_1.default.filter(function (item) { return item.parent_code === code; });
-};
-exports.getListWardByParentCode = getListWardByParentCode;
-var getWardPath = function (code) {
-    var ward = wards_json_1.default.filter(function (item) { return item.code === code; });
-    return !!ward.length ? ward[0].path : "";
-};
+/**
+ * @description Get list of wards by province_code
+ * @param {string} code - The province code of the wards
+ * @returns {Ward[]}
+ */
+function getListWardByProvinceCode(province_code) {
+    return wards_json_1.default.filter(function (item) { return item.province_code === province_code; });
+}
+exports.getListWardByProvinceCode = getListWardByProvinceCode;
+/**
+ * @description Get the path of the ward by ward_code
+ * @param {string} ward_code - The code of the ward
+ * @returns {string}
+ */
+function getWardPath(ward_code) {
+    var ward = wards_json_1.default.find(function (item) { return item.ward_code === ward_code; });
+    return ward ? ward.path : '';
+}
 exports.getWardPath = getWardPath;
-var getWardPathWithType = function (code) {
-    var ward = wards_json_1.default.filter(function (item) { return item.code === code; });
-    return !!ward.length ? ward[0].path_with_type : "";
-};
+/**
+ * @description Get the path with type of the ward by ward_code
+ * @param {string} ward_code - The code of the ward
+ * @returns {string}
+ */
+function getWardPathWithType(ward_code) {
+    var ward = wards_json_1.default.find(function (item) { return item.ward_code === ward_code; });
+    return ward ? ward.path_with_type : '';
+}
 exports.getWardPathWithType = getWardPathWithType;
