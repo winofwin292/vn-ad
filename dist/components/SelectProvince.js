@@ -55,11 +55,11 @@ var SelectProvince = function (_a) {
     var value = _a.value, handleChange = _a.onChange, newProps = __rest(_a, ["value", "onChange"]);
     var _b = (0, react_1.useState)([]), provinces = _b[0], setProvinces = _b[1];
     (0, react_1.useEffect)(function () {
-        setProvinces((0, index_1.getAllProvince)());
+        setProvinces((0, index_1.getAllProvinces)());
     }, []);
     return (react_1.default.createElement("select", __assign({ value: value, onChange: function (e) { return handleChange(e.target.value); } }, newProps),
         react_1.default.createElement("option", { value: "-1" }, "Ch\u1ECDn t\u1EC9nh/th\u00E0nh ph\u1ED1"),
-        provinces.map(function (item, index) { return (react_1.default.createElement("option", { key: index, value: item.code }, item.name_with_type)); })));
+        provinces.map(function (item, index) { return (react_1.default.createElement("option", { key: index, value: item.province_code }, item.name_with_type)); })));
 };
 SelectProvince.propTypes = {
     value: prop_types_1.default.string.isRequired,

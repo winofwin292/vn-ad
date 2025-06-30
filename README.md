@@ -3,9 +3,9 @@
 [![Version](https://img.shields.io/npm/v/vn-ad.svg?color=green)](https://www.npmjs.com/package/vn-ad)
 
 Cung cấp các thành phần và các hàm hỗ trợ tích hợp đơn vị hành chính vào dự án ReactJS.
-
--   Dữ liệu được lấy từ https://github.com/madnh/hanhchinhvn (có chỉnh sửa).
--   Dữ liệu đơn vị hành chính được cập nhật đến ngày 5/5/2022.
+- Version >= 1.0.0
+    - Dữ liệu được lấy từ https://github.com/thanhtrungit97/dvhcvn
+    - Dữ liệu được cập nhật theo Công văn số 2896/BNV-CQĐP ngày 27/5/2025 của Bộ Nội vụ
 
 ## Cài đặt
 
@@ -25,7 +25,6 @@ Demo sử dụng vn-ad và Bootstrap 5
 import React, { useState } from "react";
 import {
     SelectProvince,
-    SelectDistrict,
     SelectWard,
     getWardPathWithType,
 } from "vn-ad";
@@ -33,7 +32,6 @@ import {
 export default function Example() {
     //Biến lưu trữ mã đơn vị hành chính
     const [tinh, setTinh] = useState("");
-    const [huyen, setHuyen] = useState("");
     const [xa, setXa] = useState("");
     //Biến lưu trữ kết quả
     const [result, setResult] = useState("");
@@ -45,8 +43,7 @@ export default function Example() {
     return (
         <>
             <SelectProvince value={tinh} onChange={setTinh} />
-            <SelectDistrict value={huyen} province={tinh} onChange={setHuyen} />
-            <SelectWard value={xa} district={huyen} onChange={setXa} />
+            <SelectWard value={xa} province={tinh} onChange={setXa} showAllNull={false} />
             <button onClick={handleShow}>Show</button>
             <p>Kết quả: {result}</p>
         </>
@@ -63,25 +60,18 @@ Thuộc tính:
 -   **value** (bắt buộc): giá trị nhận vào kiểu **_string_**. Dùng để lưu trữ mã tỉnh/thành phố khi chọn tỉnh/thành phố.
 -   **onChange** (bắt buộc): giá trị nhận vào kiểu **_func_**. Dùng để đặt giá trị mới cho **_value_** khi chọn tỉnh/thành phố.
 
-### `<SelectDistrict />`
-
-Thuộc tính:
-
--   **value** (bắt buộc): giá trị nhận vào kiểu **_string_**. Dùng để lưu trữ mã quận/huyện khi chọn quận/huyện.
--   **onChange** (bắt buộc): giá trị nhận vào kiểu **_func_**. Dùng để đặt giá trị mới cho **_value_** khi chọn quận/huyện.
--   **province**: giá trị nhận vào kiểu **_string_**. Mã tỉnh/thành phố dùng để lọc danh sách quận/huyện được chọn theo tỉnh, nếu không truyền sẽ cho phép chọn tất cả các quận/huyện ở Việt Nam.
-
 ### `<SelectWard />`
 
 Thuộc tính:
 
--   **value** (bắt buộc): giá trị nhận vào kiểu **_string_**. Dùng để lưu trữ mã xã/phường khi chọn xã/phường.
--   **onChange** (bắt buộc): giá trị nhận vào kiểu **_func_**. Dùng để đặt giá trị mới cho **_value_** khi chọn xã/phường.
--   **district**: giá trị nhận vào kiểu **_string_**. Mã quận/huyện dùng để lọc danh sách xã/phường được chọn theo tỉnh, nếu không truyền sẽ cho phép chọn tất cả các xã/phường ở Việt Nam.
+-   **value** (bắt buộc): giá trị nhận vào kiểu **_string_**. Dùng để lưu trữ mã phường/xã/đặc khu khi chọn phường/xã/đặc khu.
+-   **onChange** (bắt buộc): giá trị nhận vào kiểu **_func_**. Dùng để đặt giá trị mới cho **_value_** khi chọn phường/xã/đặc khu.
+-   **province**: giá trị nhận vào kiểu **_string_**. Mã tỉnh dùng để lọc danh sách phường/xã/đặc khu được chọn theo tỉnh.
+-   **showAllNull**: mặc định **false**. Nếu bằng **true** sẽ cho phép chọn tất cả các phường/xã/đặc khu ở Việt Nam khi **value** rỗng.
 
 ## Hàm
 
-### `getAllProvince()`
+### `getAllProvinces()`
 
 Trả về dữ liệu chứa tất cả các tỉnh/thành phố hiện tại của Việt Nam.
 
@@ -90,16 +80,20 @@ Dữ liệu trả về:
 ```json
 [
     {
-        "name": "Hà Nội",
-        "slug": "ha-noi",
-        "type": "thanh-pho",
+        "province_code": "01",
+        "name": "Thành phố Hà Nội",
+        "short_name": "Thành phố Hà Nội",
+        "code": "HNI",
+        "place_type": "Thành phố Trung Ương",
+        "slug": "thanh-pho-ha-noi",
+        "slug_type": "thanh-pho-trung-uong",
         "name_with_type": "Thành phố Hà Nội",
-        "code": "01"
+        "ward_count": 126
     }
 ]
 ```
 
-### `findProvinceByCode(pCode)`
+### `findProvinceByCode(province_code)`
 
 Trả về dữ liệu chứa tỉnh/thành phố có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -108,16 +102,20 @@ Dữ liệu trả về:
 ```json
 [
     {
-        "name": "Hà Nội",
-        "slug": "ha-noi",
-        "type": "thanh-pho",
+        "province_code": "01",
+        "name": "Thành phố Hà Nội",
+        "short_name": "Thành phố Hà Nội",
+        "code": "HNI",
+        "place_type": "Thành phố Trung Ương",
+        "slug": "thanh-pho-ha-noi",
+        "slug_type": "thanh-pho-trung-uong",
         "name_with_type": "Thành phố Hà Nội",
-        "code": "01"
+        "ward_count": 126
     }
 ]
 ```
 
-### `findProvinceByName(pName)`
+### `findProvinceByName(name)`
 
 Trả về dữ liệu chứa tỉnh/thành phố có tên giống với tên được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
@@ -126,315 +124,194 @@ Dữ liệu trả về:
 ```json
 [
     {
-        "name": "Hà Nội",
-        "slug": "ha-noi",
-        "type": "thanh-pho",
+        "province_code": "01",
+        "name": "Thành phố Hà Nội",
+        "short_name": "Thành phố Hà Nội",
+        "code": "HNI",
+        "place_type": "Thành phố Trung Ương",
+        "slug": "thanh-pho-ha-noi",
+        "slug_type": "thanh-pho-trung-uong",
         "name_with_type": "Thành phố Hà Nội",
-        "code": "01"
+        "ward_count": 126
     }
 ]
 ```
 
-### `getProvinceName(pCode)`
+### `getProvinceName(province_code)`
 
 Trả về tên của tỉnh/thành phố có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
 Dữ liệu trả về:
 
 ```
-"Hà Nội"
+"Cao Bằng"
 ```
 
-### `getProvinceNameWithType(pCode)`
+### `getProvinceNameWithType(province_code)`
 
 Trả về tên đầy đủ của tỉnh/thành phố có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
 Dữ liệu trả về:
 
 ```
-"Thành phố Hà Nội"
+"Tỉnh Cao Bằng"
 ```
 
-### `getAllDistrict()`
+### `getAllWards()`
 
-Trả về dữ liệu chứa tất cả các quận/huyện hiện tại của Việt Nam.
+Trả về dữ liệu chứa tất cả các phường/xã/đặc khu hiện tại của Việt Nam.
 
 Dữ liệu trả về:
 
 ```json
 [
     {
-        "name": "Ba Đình",
-        "type": "quan",
-        "slug": "ba-dinh",
-        "name_with_type": "Quận Ba Đình",
-        "path": "Ba Đình, Hà Nội",
-        "path_with_type": "Quận Ba Đình, Thành phố Hà Nội",
-        "code": "001",
-        "parent_code": "01"
+        "ward_code": "00070",
+        "name": "Hoàn Kiếm",
+        "place_type": "Phường",
+        "slug": "hoan-kiem",
+        "slug_type": "phuong",
+        "name_with_type": "Phường Hoàn Kiếm",
+        "path": "Hoàn Kiếm, Thành phố Hà Nội",
+        "path_with_type": "Phường Hoàn Kiếm, Thành phố Hà Nội",
+        "province_code": "01"
     }
 ]
 ```
 
-### `findDistrictByCode(dCode)`
+### `findWardByCode(ward_code)`
 
-Trả về dữ liệu chứa quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
+Trả về dữ liệu chứa phường/xã/đặc khu có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
 Dữ liệu trả về:
 
 ```json
 [
     {
-        "name": "Ba Đình",
-        "type": "quan",
-        "slug": "ba-dinh",
-        "name_with_type": "Quận Ba Đình",
-        "path": "Ba Đình, Hà Nội",
-        "path_with_type": "Quận Ba Đình, Thành phố Hà Nội",
-        "code": "001",
-        "parent_code": "01"
+        "ward_code": "00070",
+        "name": "Hoàn Kiếm",
+        "place_type": "Phường",
+        "slug": "hoan-kiem",
+        "slug_type": "phuong",
+        "name_with_type": "Phường Hoàn Kiếm",
+        "path": "Hoàn Kiếm, Thành phố Hà Nội",
+        "path_with_type": "Phường Hoàn Kiếm, Thành phố Hà Nội",
+        "province_code": "01"
     }
 ]
 ```
 
-### `findDistrictByName(dName)`
+### `findWardByName(name)`
 
-Trả về dữ liệu chứa quận/huyện có tên giống với tên được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
+Trả về dữ liệu chứa phường/xã/đặc khu có tên giống với tên được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
 Dữ liệu trả về:
 
 ```json
 [
     {
-        "name": "Ba Đình",
-        "type": "quan",
-        "slug": "ba-dinh",
-        "name_with_type": "Quận Ba Đình",
-        "path": "Ba Đình, Hà Nội",
-        "path_with_type": "Quận Ba Đình, Thành phố Hà Nội",
-        "code": "001",
-        "parent_code": "01"
+        "ward_code": "00070",
+        "name": "Hoàn Kiếm",
+        "place_type": "Phường",
+        "slug": "hoan-kiem",
+        "slug_type": "phuong",
+        "name_with_type": "Phường Hoàn Kiếm",
+        "path": "Hoàn Kiếm, Thành phố Hà Nội",
+        "path_with_type": "Phường Hoàn Kiếm, Thành phố Hà Nội",
+        "province_code": "01"
     }
 ]
 ```
 
-### `getDistrictName(dCode)`
+### `getWardName(ward_code)`
 
-Trả về tên của quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
-
-Dữ liệu trả về:
-
-```
-"Ba Đình"
-```
-
-### `getDistrictNameWithType()`
-
-Trả về tên đầy đủ của quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
+Trả về tên của phường/xã/đặc khu có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
 Dữ liệu trả về:
 
 ```
-"Quận Ba Đình"
+"Hoàn Kiếm"
 ```
 
-### `getListDistrictByParentCode(pCode)`
+### `getWardNameWithType(ward_code)`
 
-Trả về dữ liệu chứa quận/huyện thuộc tỉnh có mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
+Trả về tên đầy đủ của phường/xã/đặc khu có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
+
+Dữ liệu trả về:
+
+```
+"Phường Hoàn Kiếm"
+```
+
+### `getListWardByProvinceCode(province_code)`
+
+Trả về dữ liệu chứa phường/xã/đặc khu thuộc tỉnh có mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
 
 Dữ liệu trả về:
 
 ```json
 [
     {
-        "name": "Ba Đình",
-        "type": "quan",
-        "slug": "ba-dinh",
-        "name_with_type": "Quận Ba Đình",
-        "path": "Ba Đình, Hà Nội",
-        "path_with_type": "Quận Ba Đình, Thành phố Hà Nội",
-        "code": "001",
-        "parent_code": "01"
+        "ward_code": "00070",
+        "name": "Hoàn Kiếm",
+        "place_type": "Phường",
+        "slug": "hoan-kiem",
+        "slug_type": "phuong",
+        "name_with_type": "Phường Hoàn Kiếm",
+        "path": "Hoàn Kiếm, Thành phố Hà Nội",
+        "path_with_type": "Phường Hoàn Kiếm, Thành phố Hà Nội",
+        "province_code": "01"
     }
 ]
 ```
 
-### `getDistrictPath(dCode)`
+### `getWardPath(ward_code)`
 
-Trả về địa chỉ của quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
+Trả về địa chỉ của phường/xã/đặc khu có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
 Dữ liệu trả về:
 
 ```
-"Ba Đình, Hà Nội"
+"Hoàn Kiếm, Thành phố Hà Nội"
 ```
 
-### `getDistrictPathWithType(dCode)`
+### `getWardPathWithType(ward_code)`
 
 Trả về địa chỉ đầy đủ của quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
 
 Dữ liệu trả về:
 
 ```
-"Quận Ba Đình, Thành phố Hà Nội"
+"Phường Hoàn Kiếm, Thành phố Hà Nội"
 ```
 
-### `getAllWard()`
+### `getTreeByCode(province_code, ward_code)`
 
-Trả về dữ liệu chứa tất cả các phường/xã hiện tại của Việt Nam.
-
-Dữ liệu trả về:
-
-```json
-[
-    {
-        "name": "Phúc Xá",
-        "type": "phuong",
-        "slug": "phuc-xa",
-        "name_with_type": "Phường Phúc Xá",
-        "path": "Phúc Xá, Ba Đình, Hà Nội",
-        "path_with_type": "Phường Phúc Xá, Quận Ba Đình, Thành phố Hà Nội",
-        "code": "00001",
-        "parent_code": "001"
-    }
-]
-```
-
-### `findWardByCode(wCode)`
-
-Trả về dữ liệu chứa phường/xã có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
-
-Dữ liệu trả về:
-
-```json
-[
-    {
-        "name": "Phúc Xá",
-        "type": "phuong",
-        "slug": "phuc-xa",
-        "name_with_type": "Phường Phúc Xá",
-        "path": "Phúc Xá, Ba Đình, Hà Nội",
-        "path_with_type": "Phường Phúc Xá, Quận Ba Đình, Thành phố Hà Nội",
-        "code": "00001",
-        "parent_code": "001"
-    }
-]
-```
-
-### `findWardByName(wName)`
-
-Trả về dữ liệu chứa phường/xã có tên giống với tên được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
-
-Dữ liệu trả về:
-
-```json
-[
-    {
-        "name": "Phúc Xá",
-        "type": "phuong",
-        "slug": "phuc-xa",
-        "name_with_type": "Phường Phúc Xá",
-        "path": "Phúc Xá, Ba Đình, Hà Nội",
-        "path_with_type": "Phường Phúc Xá, Quận Ba Đình, Thành phố Hà Nội",
-        "code": "00001",
-        "parent_code": "001"
-    }
-]
-```
-
-### `getWardName(wCode)`
-
-Trả về tên của phường/xã có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
-
-Dữ liệu trả về:
-
-```
-"Phúc Xá"
-```
-
-### `getWardNameWithType(wCode)`
-
-Trả về tên đầy đủ của phường/xã có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
-
-Dữ liệu trả về:
-
-```
-"Phường Phúc Xá"
-```
-
-### `getListWardByParentCode(dCode)`
-
-Trả về dữ liệu chứa phường/xã thuộc tỉnh có mã được truyền vào. Nếu không tìm thấy sẽ trả về danh sách rỗng **[]**.
-
-Dữ liệu trả về:
-
-```json
-[
-    {
-        "name": "Phúc Xá",
-        "type": "phuong",
-        "slug": "phuc-xa",
-        "name_with_type": "Phường Phúc Xá",
-        "path": "Phúc Xá, Ba Đình, Hà Nội",
-        "path_with_type": "Phường Phúc Xá, Quận Ba Đình, Thành phố Hà Nội",
-        "code": "00001",
-        "parent_code": "001"
-    }
-]
-```
-
-### `getWardPath(wCode)`
-
-Trả về địa chỉ của phường/xã có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
-
-Dữ liệu trả về:
-
-```
-"Phúc Xá, Ba Đình, Hà Nội"
-```
-
-### `getWardPathWithType(wCode)`
-
-Trả về địa chỉ đầy đủ của quận/huyện có mã giống với mã được truyền vào. Nếu không tìm thấy sẽ trả về chuỗi rỗng **""**.
-
-Dữ liệu trả về:
-
-```
-"Phường Phúc Xá, Quận Ba Đình, Thành phố Hà Nội"
-```
-
-### `getTreeByCode(pCode, dCode, wCode)`
-
-Trả về **object** chứa thông tin của mã tỉnh/thành phố, quận/huyện, phường/xã được truyền vào. Nếu mã truyền vào không hợp lệ sẽ trả về **_null_**
+Trả về **object** chứa thông tin của mã tỉnh/thành phố, phường/xã/đặc khu được truyền vào. Nếu mã truyền vào không hợp lệ sẽ trả về **_null_**
 
 Dữ liệu trả về:
 
 ```json
 {
-    "name": "Hà Nội",
-    "slug": "ha-noi",
-    "type": "thanh-pho",
+    "province_code": "01",
+    "name": "Thành phố Hà Nội",
+    "short_name": "Thành phố Hà Nội",
+    "code": "HNI",
+    "place_type": "Thành phố Trung Ương",
+    "slug": "thanh-pho-ha-noi",
+    "slug_type": "thanh-pho-trung-uong",
     "name_with_type": "Thành phố Hà Nội",
-    "code": "01",
-    "quan_huyen": {
-        "name": "Ba Đình",
-        "type": "quan",
-        "slug": "ba-dinh",
-        "name_with_type": "Quận Ba Đình",
-        "path": "Ba Đình, Hà Nội",
-        "path_with_type": "Quận Ba Đình, Thành phố Hà Nội",
-        "code": "001",
-        "parent_code": "01",
-        "xa_phuong": {
-            "name": "Phúc Xá",
-            "type": "phuong",
-            "slug": "phuc-xa",
-            "name_with_type": "Phường Phúc Xá",
-            "path": "Phúc Xá, Ba Đình, Hà Nội",
-            "path_with_type": "Phường Phúc Xá, Quận Ba Đình, Thành phố Hà Nội",
-            "code": "00001",
-            "parent_code": "001"
-        }
+    "ward_count": 126,
+    "ward": {
+        "ward_code": "00070",
+        "name": "Hoàn Kiếm",
+        "place_type": "Phường",
+        "slug": "hoan-kiem",
+        "slug_type": "phuong",
+        "name_with_type": "Phường Hoàn Kiếm",
+        "path": "Hoàn Kiếm, Thành phố Hà Nội",
+        "path_with_type": "Phường Hoàn Kiếm, Thành phố Hà Nội",
+        "province_code": "01"
     }
 }
 ```
@@ -443,7 +320,7 @@ Dữ liệu trả về:
 
 MIT License
 
-Copyright (c) <2022> Banh Quoc Thang
+Copyright (c) <2025> Banh Quoc Thang
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

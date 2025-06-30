@@ -1,59 +1,42 @@
 import SelectProvince from "./components/SelectProvince";
-import SelectDistrict from "./components/SelectDistrict";
+// import SelectDistrict from "./components/SelectDistrict";
 import SelectWard from "./components/SelectWard";
 import { getTreeByCode } from "./utils/tree";
 import {
-    getAllProvince,
+    getAllProvinces,
     findProvinceByCode,
     findProvinceByName,
     getProvinceName,
     getProvinceNameWithType,
 } from "./utils/province";
 import {
-    getAllDistrict,
-    findDistrictByCode,
-    findDistrictByName,
-    getDistrictName,
-    getDistrictNameWithType,
-    getListDistrictByParentCode,
-    getDistrictPath,
-    getDistrictPathWithType,
-} from "./utils/district";
-import {
-    getAllWard,
+    getAllWards,
     findWardByCode,
     findWardByName,
     getWardName,
     getWardNameWithType,
-    getListWardByParentCode,
+    getListWardByProvinceCode,
     getWardPath,
     getWardPathWithType,
 } from "./utils/ward";
 
 export {
     SelectProvince,
-    SelectDistrict,
     SelectWard,
-    getAllProvince,
+    getAllProvinces,
     findProvinceByCode,
     findProvinceByName,
     getProvinceName,
     getProvinceNameWithType,
-    getAllDistrict,
-    findDistrictByCode,
-    findDistrictByName,
-    getDistrictName,
-    getDistrictNameWithType,
-    getListDistrictByParentCode,
-    getDistrictPath,
-    getDistrictPathWithType,
-    getAllWard,
+
+    getAllWards,
     findWardByCode,
     findWardByName,
     getWardName,
     getWardNameWithType,
-    getListWardByParentCode,
+    getListWardByProvinceCode,
     getWardPath,
     getWardPathWithType,
+
     getTreeByCode,
 };

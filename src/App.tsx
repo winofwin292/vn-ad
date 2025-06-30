@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { SelectProvince, SelectDistrict, SelectWard } from "./lib/index";
+import { SelectProvince, SelectWard } from "./lib/index";
 
-import { getWardPathWithType } from "./lib/index";
+import { getWardPathWithType, getTreeByCode } from "./lib/index";
 
 const App: React.FC = () => {
-    const [tinh, setTinh] = useState("");
-    const [huyen, setHuyen] = useState("");
-    const [xa, setXa] = useState("");
+    const [tinh, setTinh] = useState<string>("");
+    const [xa, setXa] = useState<string>("");
 
     const [result, setResult] = useState("");
 
     const handleShow = () => {
+        console.log(getTreeByCode(tinh, xa));
         setResult(getWardPathWithType(xa));
     };
 
@@ -24,20 +24,13 @@ const App: React.FC = () => {
                     value={tinh}
                     onChange={setTinh}
                 />
-                <SelectDistrict
-                    className="form-select form-select-sm"
-                    aria-label=".form-select-sm example"
-                    style={{ width: "150px" }}
-                    value={huyen}
-                    province={tinh}
-                    onChange={setHuyen}
-                />
                 <SelectWard
                     className="form-select form-select-sm"
                     aria-label=".form-select-sm example"
                     style={{ width: "150px" }}
                     value={xa}
-                    district={huyen}
+                    province={tinh}
+                    showAllNull={false}
                     onChange={setXa}
                 />
             </div>

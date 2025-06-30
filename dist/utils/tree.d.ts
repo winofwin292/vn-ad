@@ -1,29 +1,24 @@
 type Tree = {
+    province_code: string;
     name: string;
-    slug: string;
-    type: string;
-    name_with_type: string;
+    short_name: string;
     code: string;
-    quan_huyen?: {
+    place_type: string;
+    slug: string;
+    slug_type: string;
+    name_with_type: string;
+    ward_count: number;
+    ward?: {
+        ward_code: string;
         name: string;
-        type: string;
+        place_type: string;
         slug: string;
+        slug_type: string;
         name_with_type: string;
         path: string;
         path_with_type: string;
-        code: string;
-        parent_code: string;
-        xa_phuong?: {
-            name: string;
-            type: string;
-            slug: string;
-            name_with_type: string;
-            path: string;
-            path_with_type: string;
-            code: string;
-            parent_code: string;
-        };
+        province_code: string;
     };
 };
-export declare const getTreeByCode: (pCode: string, dCode: string, cCode: string) => Tree | null;
+export declare const getTreeByCode: (province_code: string, ward_code: string) => Tree | null;
 export {};

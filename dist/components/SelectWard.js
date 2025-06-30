@@ -52,23 +52,29 @@ var react_1 = __importStar(require("react"));
 var prop_types_1 = __importDefault(require("prop-types"));
 var index_1 = require("../index");
 var SelectWard = function (_a) {
-    var value = _a.value, handleChange = _a.onChange, district = _a.district, newProps = __rest(_a, ["value", "onChange", "district"]);
-    var _b = (0, react_1.useState)([]), wards = _b[0], setWards = _b[1];
+    var value = _a.value, handleChange = _a.onChange, province = _a.province, _b = _a.showAllNull, showAllNull = _b === void 0 ? false : _b, newProps = __rest(_a, ["value", "onChange", "province", "showAllNull"]);
+    var _c = (0, react_1.useState)([]), wards = _c[0], setWards = _c[1];
     (0, react_1.useEffect)(function () {
         var temp = [];
-        if (!district)
-            temp = (0, index_1.getAllWard)();
-        else if (district === "-1") {
+        if (!province) {
+            if (showAllNull) {
+                temp = (0, index_1.getAllWards)();
+            }
+            else {
+                temp = [];
+            }
+        }
+        else if (province === "-1") {
             temp = [];
         }
         else
-            temp = (0, index_1.getListWardByParentCode)(district);
+            temp = (0, index_1.getListWardByProvinceCode)(province);
         handleChange("-1");
         setWards(temp);
-    }, [handleChange, district]);
+    }, [handleChange, province, showAllNull]);
     return (react_1.default.createElement("select", __assign({ value: value, onChange: function (e) { return handleChange(e.target.value); } }, newProps),
-        react_1.default.createElement("option", { value: "-1" }, "Ch\u1ECDn x\u00E3/ph\u01B0\u1EDDng"),
-        district === "-1" ? ("") : (react_1.default.createElement(react_1.default.Fragment, null, wards.map(function (item, index) { return (react_1.default.createElement("option", { key: index, value: item.code }, item.name_with_type)); })))));
+        react_1.default.createElement("option", { value: "-1" }, "Ch\u1ECDn ph\u01B0\u1EDDng/x\u00E3/\u0111\u1EB7c khu"),
+        province === "-1" ? ("") : (react_1.default.createElement(react_1.default.Fragment, null, wards.map(function (item, index) { return (react_1.default.createElement("option", { key: index, value: item.ward_code }, item.name_with_type)); })))));
 };
 SelectWard.propTypes = {
     value: prop_types_1.default.string.isRequired,

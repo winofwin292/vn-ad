@@ -1,29 +1,21 @@
 import React, { memo, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { getListWardByParentCode, getAllWard } from "../index";
+import { getListWardByProvinceCode, getAllWards } from "../index";
+import { Ward } from "../types/Ward";
 
 type WardProps = {
     value: string;
     onChange: (id: string) => void;
-    district?: string;
+    province?: string;
+    showAllNull?: boolean;
     [x: string]: any;
-};
-
-type Ward = {
-    name: string;
-    type: string;
-    slug: string;
-    name_with_type: string;
-    path: string;
-    path_with_type: string;
-    code: string;
-    parent_code: string;
 };
 
 const SelectWard: React.FC<WardProps> = ({
     value,
     onChange: handleChange,
-    district,
+    province,
+    showAllNull = false,
     ...newProps
 }) => {
     const [wards, setWards] = useState<Ward[]>([]);
@@ -31,14 +23,20 @@ const SelectWard: React.FC<WardProps> = ({
     useEffect(() => {
         let temp: Ward[] = [];
 
-        if (!district) temp = getAllWard();
-        else if (district === "-1") {
+        if (!province){
+            if (showAllNull) {
+                temp = getAllWards();
+            } else {
+                temp = [];
+            }
+        }
+        else if (province === "-1") {
             temp = [];
-        } else temp = getListWardByParentCode(district);
+        } else temp = getListWardByProvinceCode(province);
 
         handleChange("-1");
         setWards(temp);
-    }, [handleChange, district]);
+    }, [handleChange, province, showAllNull]);
 
     return (
         <select
@@ -46,13 +44,13 @@ const SelectWard: React.FC<WardProps> = ({
             onChange={(e) => handleChange(e.target.value)}
             {...newProps}
         >
-            <option value="-1">Chọn xã/phường</option>
-            {district === "-1" ? (
+            <option value="-1">Chọn phường/xã/đặc khu</option>
+            {province === "-1" ? (
                 ""
             ) : (
                 <>
                     {wards.map((item, index) => (
-                        <option key={index} value={item.code}>
+                        <option key={index} value={item.ward_code}>
                             {item.name_with_type}
                         </option>
                     ))}
