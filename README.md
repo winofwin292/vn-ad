@@ -5,7 +5,7 @@
 Cung cấp các thành phần và các hàm hỗ trợ tích hợp đơn vị hành chính vào dự án ReactJS.
 - Version >= 1.0.0
     - Dữ liệu được lấy từ https://github.com/thanhtrungit97/dvhcvn
-    - Dữ liệu được cập nhật theo Công văn số 2896/BNV-CQĐP ngày 27/5/2025 của Bộ Nội vụ
+    - Dữ liệu được cập nhật theo Nghị quyết số 202/2025/QH15 của Quốc hội
 
 ## Cài đặt
 
@@ -18,6 +18,8 @@ $ npm install vn-ad
 Demo sử dụng vn-ad và Bootstrap 5
 
 ![This is an image](./demo.gif)
+
+[Source code demo](https://github.com/bqthangdev/demo-vn-ad)
 
 ## Sử dụng
 
